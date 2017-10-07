@@ -1,0 +1,207 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dev Example — Networked-Aframe</title>
+    <meta name="description" content="Dev Example — Networked-Aframe">
+
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="/build.js"></script>
+
+    <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.5/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script> 
+
+    <script>
+      // Define custom schema for syncing avatar color, set by random-color
+      NAF.schemas.add({
+        template: '#avatar-template',
+        components: [
+          'position',
+          'rotation',
+          {
+            selector: '.head',
+            component: 'material',
+            property: 'color'
+          }
+        ]
+      });
+
+      // Called by Networked-Aframe when connected to server
+      function onConnect () {
+        console.log("onConnect", new Date());
+      }
+    </script>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+    <script src="/easyrtc/easyrtc.js"></script>
+    <a-scene networked-scene="
+      room: dev;
+      debug: true;
+      adapter: wseasyrtc;
+    ">
+
+      <a-assets>
+
+        <img id="testTex" src="test.png">
+        
+        <a-mixin id="floorMat" material="color:#BBB"></a-mixin>
+        
+        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+        <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+        <!-- <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous"> -->
+        <!-- <img id="sky" src="http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" /> -->
+
+        <!-- Templates -->
+
+        <!-- Avatar -->
+        <script id="avatar-template" type="text/html">
+          <a-entity class="avatar">
+            <a-sphere class="head"
+              color="#5985ff"
+              scale="0.45 0.5 0.4"
+              random-color
+            ></a-sphere>
+            <a-entity class="face"
+              position="0 0.05 0"
+            >
+              <a-sphere class="eye"
+                color="#efefef"
+                position="0.16 0.1 -0.35"
+                scale="0.12 0.12 0.12"
+              >
+                <a-sphere class="pupil"
+                  color="#000"
+                  position="0 0 -1"
+                  scale="0.2 0.2 0.2"
+                ></a-sphere>
+              </a-sphere>
+              <a-sphere class="eye"
+                color="#efefef"
+                position="-0.16 0.1 -0.35"
+                scale="0.12 0.12 0.12"
+              >
+                <a-sphere class="pupil"
+                  color="#000"
+                  position="0 0 -1"
+                  scale="0.2 0.2 0.2"
+                ></a-sphere>
+              </a-sphere>
+            </a-entity>
+          </a-entity>
+        </script>
+
+        <script id="simple" type="text/html">
+          <a-sphere></a-sphere>
+        </script>
+      </a-assets>
+
+        <!-- /Templates -->
+
+      <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight: 1.6" spawn-in-circle="radius:3" wasd-controls look-controls>
+      </a-entity>
+
+<!--       <a-entity position="0 0 0"
+        geometry="primitive: plane; width: 10000; height: 10000;" rotation="-90 0 0"
+        material="src: #grid; repeat: 10000 10000; transparent: true; metalness:0.6; roughness: 0.4; sphericalEnvMap: #sky;"></a-entity> -->
+
+<!--       <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
+      <a-entity light="color: #ffaaff; intensity: 1.5" position="5 5 5"></a-entity> -->
+
+      <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048" segments-height="5" segments-width="8"></a-sky>
+      <a-plane src="#groundTexture" rotation="-90 0 0" position="0 -0.01 0" height="100" width="100"></a-plane>
+
+      <a-light type="directional" intensity="0.9" position="-1 -2  2"></a-light>
+      <a-light type="directional" intensity="1.0" position=" 2  1 -1"></a-light>
+      <a-assets>
+        <a-asset-item id="penguin" src="/3DModels/NiceBed.glb"></a-asset-item>
+      </a-assets>
+      <a-entity gltf-model="#penguin"></a-entity>
+
+
+       <rw-room position="-2.5 0 -2.5" width="5" length="5" height="3">
+        
+        <rw-wall material="color:#F88">
+          <rw-doorhole id="holeA"></rw-doorhole>
+        </rw-wall>
+        <rw-wall material="color:#F88"></rw-wall>
+        <rw-wall material="color:#F88">
+          <rw-doorhole id="frontInner"></rw-doorhole>
+        </rw-wall>
+        <rw-wall material="color:#F88"></rw-wall>
+        
+        <rw-floor mixin="floorMat"></rw-floor>
+        <rw-ceiling material="color:#AAA"></rw-ceiling>
+        
+      </rw-room>
+      
+      <rw-doorlink from="#holeA" to="#holeB" width="2" position="0.5 0 0">
+        <rw-floor mixin="floorMat"></rw-floor>
+        <rw-ceiling material="color:#BB6"></rw-ceiling>
+        <rw-sides material="color:#BB6"></rw-sides>
+      </rw-doorlink>
+      
+      <rw-room position="0 0 -2.7">
+        
+        <rw-wall position="-2 0 0" material="color:#F00"></rw-wall>
+        <rw-wall position=" 2 0 0" material="src:#testTex; repeat:0.5 0.5;">
+          <rw-doorhole id="holeB"></rw-doorhole>
+        </rw-wall>
+        <rw-wall position=" 2 0 -5" material="color:#00F">
+          <rw-doorhole id="holeC"></rw-doorhole>
+          <rw-doorlink from="#holeC" to="#holeD" position="4 0 0"></rw-doorlink>
+        </rw-wall>
+        <rw-wall position="-2 0 -5" material="color:#F0F">
+          <a-box position="0.5 1.4 0" scale="0.5 0.5 0.2"></a-box>
+          <a-box position="1.5 1.7 0" scale="0.5 0.5 0.2"></a-box>
+          <a-box position="2.5 1.4 0" scale="0.5 0.5 0.2"></a-box>
+        </rw-wall>
+        
+        <rw-floor mixin="floorMat"></rw-floor>
+        <rw-ceiling material="color:#99A"></rw-ceiling>
+        
+      </rw-room>
+      
+      <rw-room position="2 0 -5">
+        
+        <rw-wall position="0 0 0" material="color:#800"></rw-wall>
+        <rw-wall position="0 0 2" material="color:#800">
+          <rw-doorhole id="holeD"></rw-doorhole>
+        </rw-wall>
+        <rw-wall position="1 0 2" material="color:#800"></rw-wall>
+        <rw-wall position="1 0 0" material="color:#800"></rw-wall>
+        
+        <rw-floor mixin="floorMat"></rw-floor>
+        <rw-ceiling material="color:#99A"></rw-ceiling>
+        
+      </rw-room>
+      
+      <rw-room position="0 0 0" outside="true" material="color:#877">
+        
+        <rw-wall position="-3 0 -8" height="3"></rw-wall>
+        <rw-wall position=" 4 0 -8" height="3"></rw-wall>
+        <rw-wall position=" 4 0  3" height="3"></rw-wall>
+        <rw-wall position="-3 0  3" height="3">
+          <rw-doorhole id="frontOuter"></rw-doorhole>
+          <rw-doorlink from="#frontInner" to="#frontOuter" material="color:#778" position="3 0 0">
+            <rw-floor></rw-floor>
+            <rw-ceiling></rw-ceiling>
+            <rw-sides></rw-sides>
+          </rw-doorlink>
+        </rw-wall>
+        
+      </rw-room>  
+ <!--      <a-sky src="#sky" rotation="0 -90 0"></a-sky>
+      <a-entity id="particles" particle-system="preset: snow"></a-entity> -->
+    </a-scene>
+    <script>
+      // On mobile remove elements that are resource heavy
+      var isMobile = AFRAME.utils.device.isMobile();
+
+      if (isMobile) {
+        var particles = document.getElementById('particles');
+        particles.parentNode.removeChild(particles);
+      }
+    </script>
+  </body>
+</html>
