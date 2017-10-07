@@ -44,9 +44,14 @@
       adapter: wseasyrtc;
     ">
 
+      <a-light type="directional" position="0 0 0" rotation="-90 0 0" target="#directionaltarget">
+        <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
+      </a-light>
+
       <a-assets>
 
-        <img id="testTex" src="test.png">
+        <img id="floorTexture" src="/InternalTextures/FloorTexture.jpg">
+        <img id="wallTexture" src="/InternalTextures/WallTexture.jpg">
         
         <a-mixin id="floorMat" material="color:#BBB"></a-mixin>
         
@@ -117,37 +122,37 @@
       <a-light type="directional" intensity="0.9" position="-1 -2  2"></a-light>
       <a-light type="directional" intensity="1.0" position=" 2  1 -1"></a-light>
       <a-assets>
-        <a-asset-item id="penguin" src="/3DModels/NiceBed/NiceBed.glb"></a-asset-item>
+        <!-- <a-asset-item id="penguin" src="/3DModels/NiceBed/NiceBed.glb"></a-asset-item> -->
       </a-assets>
       <a-entity gltf-model="#penguin"></a-entity>
 
 
-       <rw-room position="-2.5 0 -2.5" width="5" length="5" height="3">
+       <rw-room position="-2.5 0 -2.5" width="10" length="5" height="3">
         
-        <rw-wall material="color:#F88">
+        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;">
           <rw-doorhole id="holeA"></rw-doorhole>
         </rw-wall>
-        <rw-wall material="color:#F88"></rw-wall>
-        <rw-wall material="color:#F88">
+        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;"> </rw-wall>
+        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;">
           <rw-doorhole id="frontInner"></rw-doorhole>
         </rw-wall>
-        <rw-wall material="color:#F88"></rw-wall>
+        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
         
-        <rw-floor mixin="floorMat"></rw-floor>
+        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
         <rw-ceiling material="color:#AAA"></rw-ceiling>
         
       </rw-room>
       
       <rw-doorlink from="#holeA" to="#holeB" width="2" position="0.5 0 0">
-        <rw-floor mixin="floorMat"></rw-floor>
+        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
         <rw-ceiling material="color:#BB6"></rw-ceiling>
-        <rw-sides material="color:#BB6"></rw-sides>
+        <rw-sides material="src:#wallTexture; repeat:2.0 2.0;"></rw-sides>
       </rw-doorlink>
       
       <rw-room position="0 0 -2.7">
         
-        <rw-wall position="-2 0 0" material="color:#F00"></rw-wall>
-        <rw-wall position=" 2 0 0" material="src:#testTex; repeat:0.5 0.5;">
+        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
+        <rw-wall position=" 2 0 0" material="src:#floorTexture; repeat:0.5 0.5;">
           <rw-doorhole id="holeB"></rw-doorhole>
         </rw-wall>
         <rw-wall position=" 2 0 -5" material="color:#00F">
@@ -160,7 +165,7 @@
           <a-box position="2.5 1.4 0" scale="0.5 0.5 0.2"></a-box>
         </rw-wall>
         
-        <rw-floor mixin="floorMat"></rw-floor>
+        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
         <rw-ceiling material="color:#99A"></rw-ceiling>
         
       </rw-room>
@@ -174,7 +179,7 @@
         <rw-wall position="1 0 2" material="color:#800"></rw-wall>
         <rw-wall position="1 0 0" material="color:#800"></rw-wall>
         
-        <rw-floor mixin="floorMat"></rw-floor>
+        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
         <rw-ceiling material="color:#99A"></rw-ceiling>
         
       </rw-room>
