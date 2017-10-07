@@ -6,11 +6,14 @@
 
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="/build.js"></script>
-
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.5/dist/aframe-particle-system-component.min.js"></script>
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script> 
-
+    <script src="js/util.js"></script>
     <script>
       // Define custom schema for syncing avatar color, set by random-color
       NAF.schemas.add({
@@ -202,6 +205,9 @@
         var particles = document.getElementById('particles');
         particles.parentNode.removeChild(particles);
       }
+    </script>
+    <script>
+    getModels();
     </script>
   </body>
 </html>
