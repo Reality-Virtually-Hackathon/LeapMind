@@ -1,0 +1,475 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.94016999006271362,
+        0.64168000221252441,
+        -0.33171001076698303
+      ],
+      "min": [
+        -0.49222999811172485,
+        -0.71885001659393311,
+        -0.54104000329971313
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 786384,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        1,
+        0.99977856874465942,
+        1
+      ],
+      "min": [
+        -0.77580195665359497,
+        -0.99996191263198853,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 388140,
+      "max": [
+        65531
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1572768,
+      "componentType": 5126,
+      "count": 24934,
+      "max": [
+        0.91459000110626221,
+        0.64392000436782837,
+        -0.33188000321388245
+      ],
+      "min": [
+        -0.64424002170562744,
+        -0.74304002523422241,
+        -0.74661999940872192
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1871976,
+      "componentType": 5126,
+      "count": 24934,
+      "max": [
+        0.9999963641166687,
+        0.99994856119155884,
+        1
+      ],
+      "min": [
+        -0.99999338388442993,
+        -0.99998182058334351,
+        -0.99991750717163086
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1552560,
+      "componentType": 5125,
+      "count": 130836,
+      "max": [
+        24933
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2171184,
+      "componentType": 5126,
+      "count": 1249,
+      "max": [
+        4.0808200836181641,
+        1,
+        1.3451499938964844
+      ],
+      "min": [
+        -1.1778600215911865,
+        -2.003809928894043,
+        -0.9679800271987915
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2186172,
+      "componentType": 5126,
+      "count": 1249,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 2075904,
+      "componentType": 5125,
+      "count": 6672,
+      "max": [
+        1248
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2201160,
+      "componentType": 5126,
+      "count": 516,
+      "max": [
+        -0.53009998798370361,
+        -0.79487001895904541,
+        4.7094402313232422
+      ],
+      "min": [
+        -1.478410005569458,
+        -1.3191900253295898,
+        2.282520055770874
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2207352,
+      "componentType": 5126,
+      "count": 516,
+      "max": [
+        0.99700957536697388,
+        0.99945682287216187,
+        0.99999600648880005
+      ],
+      "min": [
+        -0.99700957536697388,
+        -0.99945682287216187,
+        -0.99999600648880005
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 2102592,
+      "componentType": 5125,
+      "count": 3072,
+      "max": [
+        515
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "generator": "Sketchfab (OSG glTF plugin)",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2114880,
+      "byteOffset": 0,
+      "name": "ScalarBufferView",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2213544,
+      "byteOffset": 2114880,
+      "byteStride": 12,
+      "name": "Vec4BufferView",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 4328424,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_materials_pbrSpecularGlossiness"
+  ],
+  "extensionsUsed": [
+    "KHR_materials_pbrSpecularGlossiness"
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "extensions": {
+        "KHR_materials_pbrSpecularGlossiness": {
+          "diffuseFactor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "glossinessFactor": 0.40000000000000002,
+          "specularFactor": [
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "name": "Material.006"
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "extensions": {
+        "KHR_materials_pbrSpecularGlossiness": {
+          "diffuseFactor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "glossinessFactor": 0.40000000000000002,
+          "specularFactor": [
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "name": "Material.005"
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "extensions": {
+        "KHR_materials_pbrSpecularGlossiness": {
+          "diffuseFactor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "glossinessFactor": 0,
+          "specularFactor": [
+            0.80000007149999997,
+            0.1076874286,
+            0.1006703526
+          ]
+        }
+      },
+      "name": "Material.004"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "GeodePlane",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 2,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "GeodeCube",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 7,
+            "POSITION": 6
+          },
+          "indices": 8,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "GeodeCylinder",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 10,
+            "POSITION": 9
+          },
+          "indices": 11,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3,
+        5,
+        7
+      ],
+      "name": "Root"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        2.2847400000000002,
+        0,
+        0,
+        0,
+        0,
+        2.2847400000000002,
+        0,
+        0,
+        0,
+        0,
+        2.2847400000000002,
+        0,
+        0.56150999999999995,
+        -2.1326299999999998,
+        2.06203,
+        1
+      ],
+      "name": "Plane"
+    },
+    {
+      "mesh": 0,
+      "name": "GeodePlane"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0.36222000000000004,
+        -1.72994,
+        1.0202599999999999,
+        1
+      ],
+      "name": "Cube"
+    },
+    {
+      "mesh": 1,
+      "name": "GeodeCube"
+    },
+    {
+      "children": [
+        8
+      ],
+      "matrix": [
+        0.96609000000000012,
+        -0.00074000000000000021,
+        0.25819999999999999,
+        0,
+        -0.25821,
+        -0.0027700000000000008,
+        0.96609000000000012,
+        0,
+        -0,
+        -1,
+        -0.002870000000000001,
+        0,
+        4.3856400000000004,
+        1.2378699999999998,
+        2.7049800000000004,
+        1
+      ],
+      "name": "Cylinder"
+    },
+    {
+      "mesh": 2,
+      "name": "GeodeCylinder"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
+
