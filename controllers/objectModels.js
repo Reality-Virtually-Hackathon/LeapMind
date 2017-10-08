@@ -71,8 +71,13 @@ function getAmericanRoomTranslations(req, res) {
 			"arab_vern": "hadha hu eilm alwilayat almutahida",
 			"arab_text": "flagUS_trans.png"
 		},
-		"Shakira": {
+		"shakira1": {
 			"eng": "Shakira is my favorite singer",
+			"arab_vern": "shakiraan hu almaghniu almufadal ladaya",
+			"arab_text": "Shakira_trans1.png"
+		},
+		"shakira2": {
+			"eng": "Shakira is my favorite girl",
 			"arab_vern": "shakiraan hu almaghniu almufadal ladaya",
 			"arab_text": "Shakira_trans1.png"
 		},

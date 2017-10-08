@@ -12,13 +12,14 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
+    
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script> 
     <script src="https://unpkg.com/aframe-cubemap-component@0.1.2/dist/aframe-cubemap-component.min.js"></script>
-<!--     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script> -->
     <script src="js/util.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://github.com/nylki/aframe-fit-texture-component/raw/master/dist/aframe-fit-texture-component.min.js"></script> 
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
     <script src="js/cursor-listener.js"></script>
- 
     <script>
       // Define custom schema for syncing avatar color, set by random-color
       NAF.schemas.add({
@@ -55,9 +56,13 @@
         <a-entity auto-detect-controllers></a-entity>
         <img id="floorTexture" src="/InternalTextures/SyrianFloor.jpg">
         <img id="wallTexture" src="/InternalTextures/SyrianWall.jpg">
+        <img id="shakira" src="/InternalTextures/shakiraSy.jpg">
+
+        <audio id="river" src="ambientsound.wav" preload="auto"></audio>
         
         <a-mixin id="floorMat" material="src:#floorTexture; repeat:0.3 0.3; shader: flat;"></a-mixin>
         <a-mixin id="wallMat" material="src:#wallTexture; repeat:0.5 0.5;"></a-mixin>
+        <a-mixin id="shakiraMat" material="src:#shakira;">
         
         <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
         <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
@@ -104,8 +109,9 @@
           <a-sphere></a-sphere>
         </script>
       </a-assets>
+      <a-entity id="river" position="-10 0 0" sound="src: #river; autoplay: true; loop: true; volume: 0.5"></a-entity>
         <!-- /Templates -->
-      <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight: 1.4" spawn-in-circle="radius:3" wasd-controls look-controls>
+      <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight: 1.0" spawn-in-circle="radius:3" wasd-controls look-controls>
               <a-entity cursor="fuse: true; fuseTimeout: 500"
                   position="0 0 -1"
                   geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
@@ -139,12 +145,12 @@
       </a-assets>
 
       <!-- Nightstand bounding box and model --> 
-      <a-entity id="nightstand1" class="interactive" geometry="primitive: box; width: 0.8; depth: 0.8; height: 2.3" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0 0" cursor-listener>
+      <a-entity id="nightstand1" class="interactive" geometry="primitive: box; width: 0.8; depth: 0.8; height: 2.3" material="wireframe: false; transparency: true; opacity: 0.0" position="4.5 0 0" cursor-listener>
         <a-entity class="interactive" gltf-model="#nightstand2" position = "0 0 0" scale="0.002 0.002 0.002" rotation="0 -90 0" handle-events></a-entity>
       </a-entity>
       <!-- end --> 
       <!-- Artist easel bounding box and model --> 
-      <a-entity id="artistEaselModel" class="interactive" geometry="primitive: box; width: 0.8; depth: 0.8; height: 2.3" material="wireframe: true; transparency: true; opacity: 1.0" position="0 0.005 2.5" cursor-listener>
+      <a-entity id="easel1" class="interactive" geometry="primitive: box; width: 0.8; depth: 0.8; height: 2.3" material="wireframe: true; transparency: true; opacity: 0.0" position="0 0.005 2.5" cursor-listener>
         <a-entity class="artist" gltf-model="#artist" position="0 0 0" scale="0.005 0.005 0.005" rotation = "0 175 0" handle-events></a-entity>
       </a-entity>
       <!--end-->
@@ -153,14 +159,19 @@
                 cursor-listener>
       </a-entity>
       <!-- Bed bounding box and model --> 
-      <a-entity id="bed1" class="interactive" geometry="primitive: box; width: 2; depth: 0.8; height: 2.8" material="wireframe: true; transparency: true; opacity: 1.0" position="2 0 -1" cursor-listener>
+      <a-entity id="bed1" class="interactive" geometry="primitive: box; width: 2; depth: 0.8; height: 2.8" material="wireframe: true; transparency: true; opacity: 0.0" position="2 0 -1" cursor-listener>
         <a-entity class="interactive" gltf-model="#bed" position="2.8 0 2" 
                 scale="0.1 0.1 0.1" rotation="0 0 0"
                 cursor-listener></a-entity>
       </a-entity>
+
+      <a-entity id="shakira2" class="interactive" geometry="primitive: box; width: 2; depth: 0.8; height: 2.8" material="wireframe: true; transparency: true; opacity: 0.0" position="-1.9 1.5 0" 
+      rotation= "0 90 0" cursor-listener>
+          <a-plane width="1" height="1" shader="flat" mixin="shakiraMat">
+      </a-entity>
       <!-- end --> 
       <!-- Table bounding box and model --> 
-      <a-entity id="table" class="interactive" geometry="primitive: box; width: 1; depth: 1; height: 1" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0.0 2.1" cursor-listener>
+      <a-entity id="table" class="interactive" geometry="primitive: box; width: 1; depth: 1; height: 1" material="wireframe: true; transparency: true; opacity: 0.0" position="4.5 0.0 2.1" cursor-listener>
         <a-entity class="interactive" gltf-model="#table" position="0 0 0 " scale="1.4 1 1.4"></a-entity>
       </a-entity>
       <!-- <a-entity class="interactive"  gltf-model="#drawer" position="-0.5 0.0 -1.95" 
@@ -192,75 +203,6 @@
             <rw-wall position="-1 0 -1" ></rw-wall>
         </rw-room>
         
-<!--
-       <rw-room position="0 0 -3" material="src:#wallTexture; repeat:2.0 2.0;">
-            <rw-wall position=" 1 0 -1" ></rw-wall>
-            <rw-wall position=" 1 0  1" >
-                <rw-doorhole id="holeB"></rw-doorhole>
-            </rw-wall>
-            <rw-wall position="-1 0  1" ></rw-wall>
-            <rw-wall position="-1 0 -1" ></rw-wall>
-        </rw-room>
-       <rw-room position="-2.5 0 -2.5" width="10" length="5" height="3">
-        
-        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;">
-          <rw-doorhole id="holeA"></rw-doorhole>
-        </rw-wall>
-        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;"> </rw-wall>
-        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;">
-          <rw-doorhole id="frontInner"></rw-doorhole>
-        </rw-wall>
-        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        
-        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
-        <rw-ceiling material="color:#AAA"></rw-ceiling>
-        
-      </rw-room>
-      
-      <rw-doorlink from="#holeA" to="#holeB" width="2" position="0.5 0 0">
-        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
-        <rw-ceiling material="color:#BB6"></rw-ceiling>
-        <rw-sides material="src:#wallTexture; repeat:2.0 2.0;"></rw-sides>
-      </rw-doorlink>
-      
-      <rw-room position="0 0 -2.7">
-        
-        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        <rw-wall position=" 2 0 0" material="src:#wallTexture; repeat: 2.0 2.0;">
-          <rw-doorhole id="holeB"></rw-doorhole>
-        </rw-wall>
-        <rw-wall position=" 2 0 -5" material="src:#wallTexture; repeat:2.0 2.0;">
-          <rw-doorhole id="holeC"></rw-doorhole>
-          <rw-doorlink from="#holeC" to="#holeD" position="4 0 0"></rw-doorlink>
-        </rw-wall>
-        <rw-wall position="-2 0 -5" material="src:#wallTexture; repeat:2.0 2.0;">
-          <a-box position="0.5 1.4 0" scale="0.5 0.5 0.2"></a-box>
-          <a-box position="1.5 1.7 0" scale="0.5 0.5 0.2"></a-box>
-          <a-box position="2.5 1.4 0" scale="0.5 0.5 0.2"></a-box>
-        </rw-wall>
-        
-        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
-        <rw-ceiling material="src:#wallTexture; repeat:2.0 2.0;"></rw-ceiling>
-        
-      </rw-room>
-      
-      <rw-room position="2 0 -5">
-        
-        <rw-wall position="0 0 0" material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        <rw-wall position="0 0 2" material="src:#wallTexture; repeat:2.0 2.0;">
-          <rw-doorhole id="holeD"></rw-doorhole>
-        </rw-wall>
-        <rw-wall position="1 0 2" material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        <rw-wall position="1 0 0" material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        
-        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
-        <rw-ceiling material="color:#99A"></rw-ceiling>
-        
-      </rw-room> -->
-      
-      
- <!--      <a-sky src="#sky" rotation="0 -90 0"></a-sky>
-      <a-entity id="particles" particle-system="preset: snow"></a-entity> -->
     </a-scene>
     <div class="a-enter-vr" aframe-injected>
       <button class="menu-button" title="click for options" aframe-injected>

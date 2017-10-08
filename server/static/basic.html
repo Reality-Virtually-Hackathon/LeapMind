@@ -57,6 +57,12 @@
         <a-entity auto-detect-controllers></a-entity>
         <img id="floorTexture" src="/InternalTextures/FloorTexture.jpg">
         <img id="wallTexture" src="/InternalTextures/WallTexture2.jpg">
+
+        <img id="shakira" src="/InternalTextures/shakiraA.jpg">
+        <a-mixin id="shakiraMat" material="src:#shakira;">
+
+        <audio id="river" src="LoboLoco.mp3" preload="auto"></audio>
+
         
         <a-mixin id="floorMat" material="src:#floorTexture; repeat:0.3 0.3; shader: flat;"></a-mixin>
         <a-mixin id="wallMat" material="src:#wallTexture; repeat:0.5 0.5;"></a-mixin>
@@ -103,6 +109,8 @@
         </script>
 
       </a-assets>
+
+      <a-entity id="river" position="-10 0 0" sound="src: #river; autoplay: true; loop: true; volume: 0.5"></a-entity>
         <!-- /Templates -->
       <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight: 1.4" spawn-in-circle="radius:3" wasd-controls look-controls>
               <a-entity raycaster="objects: .interactive; far: 1000; showLine: true" 
@@ -140,7 +148,7 @@
 
 
 
-      <a-entity id="bed1" class="interactive" geometry="primitive: box; width: 3; depth: 2; height: 1.5" material="wireframe: true; transparency: true; opacity: 1.0" position="2.7 1 -0.5" cursor-listener>       
+      <a-entity id="bed1" class="interactive" geometry="primitive: box; width: 3; depth: 2; height: 1.5" material="wireframe: true; transparency: true; opacity: 0.0" position="2.7 1 -0.5" cursor-listener>       
           <a-entity  gltf-model="#bed" position="-1 -1 -1" 
                     scale="0.5 0.5 0.5" rotation="0 0 0"
                     cursor-listener
@@ -149,17 +157,20 @@
       </a-entity>
 
 
+      <a-entity id="shakira1" class="interactive" geometry="primitive: box; width: 2; depth: 0.8; height: 2.8" material="wireframe: true; transparency: true; opacity: 0.0" position="-1.9 1.5 -1" 
+      rotation= "0 90 0" cursor-listener>
+          <a-plane width="1" height="1.5" shader="flat" mixin="shakiraMat">
+      </a-entity>
 
 
-
-      <a-entity id="lamp1" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.3" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0.8 2.1" cursor-listener>
+      <a-entity id="lamp1" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.3" material="wireframe: true; transparency: true; opacity: 0.0" position="4.5 0.8 2.1" cursor-listener>
            <a-entity class="interactive" gltf-model="#lamp" position="0 0 0" scale="0.1 0.1 0.1" cursor-listener></a-entity>
       </a-entity>
 
 
 
 
-      <a-entity id="nightstand1" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 1" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0.0 2.1" cursor-listener>
+      <a-entity id="nightstand1" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 1" material="wireframe: false; transparency: true; opacity: 0.0" position="4.5 0.0 2.1" cursor-listener>
            <a-entity class="interactive" gltf-model="#table" position="0 0 0" scale="1.4 1 1.4" cursor-listener></a-entity>
       </a-entity>
 
@@ -168,7 +179,7 @@
 
 
 
-      <a-entity id="dresser1" class="interactive" geometry="primitive: box; width: 1; depth: 2; height: 2.5" material="wireframe: true; transparency: true; opacity: 1.0" position="-1.9 0.0 1" cursor-listener>
+      <a-entity id="dresser1" class="interactive" geometry="primitive: box; width: 1; depth: 2; height: 2.5" material="wireframe: true; transparency: true; opacity: 0.0" position="-1.9 0.0 1" cursor-listener>
           <a-entity class="interactive"  gltf-model="#drawer" position="-0.3 0 0"  cursor-listener
                     scale="0.03 0.03 0.03" rotation="0 0 0">          
           </a-entity>
@@ -179,7 +190,7 @@
 
 
 
-      <a-entity id="ball1" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.5" material="wireframe: true; transparency: true; opacity: 1.0" position="-1.4 0.3 2.5" cursor-listener>
+      <a-entity id="ball1" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.5" material="wireframe: true; transparency: true; opacity: 0.0" position="-1.4 0.3 2.5" cursor-listener>
            <a-entity class="interactive"  gltf-model="#soccerBall" position="0 0 0" cursor-listener
                 scale="0.003 0.003 0.003" rotation="0 0 0"></a-entity>
       </a-entity>
