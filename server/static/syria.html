@@ -12,7 +12,6 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
-    
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script> 
     <script src="https://unpkg.com/aframe-cubemap-component@0.1.2/dist/aframe-cubemap-component.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
@@ -54,8 +53,8 @@
       <a-entity light="type: ambient; color: #FFFFFF; intensity: 0.4"></a-entity>
       <a-assets>
         <a-entity auto-detect-controllers></a-entity>
-        <img id="floorTexture" src="/InternalTextures/FloorTexture.jpg">
-        <img id="wallTexture" src="/InternalTextures/WallTexture2.jpg">
+        <img id="floorTexture" src="/InternalTextures/SyrianFloor.jpg">
+        <img id="wallTexture" src="/InternalTextures/SyrianWall.jpg">
         
         <a-mixin id="floorMat" material="src:#floorTexture; repeat:0.3 0.3; shader: flat;"></a-mixin>
         <a-mixin id="wallMat" material="src:#wallTexture; repeat:0.5 0.5;"></a-mixin>
@@ -131,17 +130,27 @@
       <a-plane src="#groundTexture" rotation="-90 0 0" position="0 -0.01 0" height="100" width="100"></a-plane>
       <a-assets>
           <a-asset-item id="lamp" src="/3DModels/AmericanRoom/lamp/scene.gltf"></a-asset-item> 
+          <a-asset-item id="nightstand2" src="/3DModels/SyrianRoom/Nightstand2/scene.gltf">
+          </a-asset-item>
           <a-asset-item id="bed" src="/3DModels/AmericanRoom/bed2/scene.gltf"></a-asset-item>
           <a-asset-item id="table" src="/3DModels/AmericanRoom/marble_table/scene.gltf"></a-asset-item>
           <a-asset-item id="drawer" src="/3DModels/AmericanRoom/drawer/scene.gltf"></a-asset-item>
           <a-asset-item id="soccerBall" src="/3DModels/AmericanRoom/soccer_ball/scene.gltf"></a-asset-item>
+<!--           <a-asset-item id="cat2" src="/3DModels/SyrianRoom/Cat2/scene.gltf"></a-asset-item>
+ -->
+          <a-asset-item id="artist" src="/3DModels/SyrianRoom/artist_easel/scene.gltf"></a-asset-item>
       </a-assets>
-      <a-entity class="interactive" gltf-model="#lamp" position="4.5 0.8 2.1" scale="0.1 0.1 0.1" handle-events
-                ></a-entity>
+      <a-entity class="interactive" gltf-model="#nightstand2" position = "0 0 0" scale="1 1 1" handle-events>
+      </a-entity>
+      <a-entity class="artist" gltf-model="#artist" position="0 0.005 2.5" scale="0.005 0.005 0.005" rotation = "0 175 0" handle-events></a-entity>
+      <a-entity class="interactive" gltf-model="#lamp" position="4.5 0.8 2.1" scale="0.1 0.1 0.1" handle-events>
+      </a-entity>
+<!--       <a-entity class="interactive" gltf-model="#cat2" position="0 0 -0.5" 
+                scale="0.1 0.01 0.01" rotation="0 0 0"
+                cursor-listener> -->
       <a-entity class="interactive" gltf-model="#bed" position="2.7 0 -0.5" 
                 scale="0.5 0.5 0.5" rotation="0 0 0"
-                cursor-listener
-                >
+                cursor-listener>
       </a-entity>
       <a-entity class="interactive" gltf-model="#table" position="4.5 0.0 2.1" scale="1.4 1 1.4"
                 ></a-entity>

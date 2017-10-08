@@ -204,10 +204,10 @@
   ],
   "images": [
     {
-      "uri": "textures/YOUR%20MATERIAL_baseColor.jpeg"
+      "uri": "textures/material_basecolor.jpeg"
     },
     {
-      "uri": "textures/07%20-%20Default_baseColor.jpeg"
+      "uri": "textures/default_baseColor.jpeg"
     }
   ],
   "materials": [
