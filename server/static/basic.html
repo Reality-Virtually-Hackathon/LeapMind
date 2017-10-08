@@ -15,7 +15,6 @@
     
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script> 
     <script src="https://unpkg.com/aframe-cubemap-component@0.1.2/dist/aframe-cubemap-component.min.js"></script>
-    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <script src="js/util.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
     <script src="js/cursor-listener.js"></script>
@@ -62,8 +61,11 @@
         
         <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
         <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
-        <!-- <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous"> -->
-        <img id="sky" src="http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" /> 
+        <!-- <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous"> 
+        <img id="sky" src="http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" /> -->
+
+        <
+
         <!-- Templates -->
         <!-- Avatar -->
         <script id="avatar-template" type="text/html">
@@ -107,14 +109,22 @@
       </a-assets>
         <!-- /Templates -->
       <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight: 1.4" spawn-in-circle="radius:3" wasd-controls look-controls>
-              <a-entity cursor="fuse: true; fuseTimeout: 500"
+              <a-entity raycaster="objects: .interactive; far: 1000; showLine: true" 
+                        cursor="fuse: true; fuseTimeout: 500"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                        material="color: black; shader: flat"
+
+              ></a-entity>
+              <!--<a-entity cursor="fuse: true; fuseTimeout: 500"
                   position="0 0 -1"
+                  raycaster="far: 20; interval: 1000; objects: [interactive]"
                   geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
                   material="color: black; shader: flat">
-              </a-entity>
+              </a-entity> -->
             </a-entity>
         </a-entity>
-        <a-entity ui-modal visible="false">
+        <!-- <a-entity ui-modal visible="false">
           <a-plane width="3" height="0.5" color="black" position="0 -3.2 0" opacity="0.5">
                   <a-text id="text1" value="Insert Bed"></a-text>
           </a-plane>
@@ -126,8 +136,11 @@
           opacity="0.5">
                   <a-text id="text3" value="Insert pet"></a-text>
           </a-plane>
-        </a-entity>
-      <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048" segments-height="5" segments-width="8"></a-sky>
+        </a-entity> -->
+
+      <a-entity cubemap="folder: /InternalTextures/cubemaps/Boston/; edgeLength: 100"></a-entity>
+
+      <!--a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048" segments-height="5" segments-width="8"></a-sky>-->
       <a-plane src="#groundTexture" rotation="-90 0 0" position="0 -0.01 0" height="100" width="100"></a-plane>
       <a-assets>
           <a-asset-item id="lamp" src="/3DModels/AmericanRoom/lamp/scene.gltf"></a-asset-item> 
@@ -136,41 +149,62 @@
           <a-asset-item id="drawer" src="/3DModels/AmericanRoom/drawer/scene.gltf"></a-asset-item>
           <a-asset-item id="soccerBall" src="/3DModels/AmericanRoom/soccer_ball/scene.gltf"></a-asset-item>
       </a-assets>
-      <a-entity class="interactive" gltf-model="#lamp" position="4.5 0.8 2.1" scale="0.1 0.1 0.1" handle-events
-                ></a-entity>
-      <a-entity class="interactive" gltf-model="#bed" position="2.7 0 -0.5" 
-                scale="0.5 0.5 0.5" rotation="0 0 0"
-                cursor-listener
-                >
+
+      
+
+      <a-entity id="bedModel" class="interactive" geometry="primitive: box; width: 3; depth: 2; height: 1.5" material="wireframe: true; transparency: true; opacity: 1.0" position="2.7 1 -0.5" cursor-listener>
+          
+          <a-entity  gltf-model="#bed" position="-1 -1 -1" 
+                    scale="0.5 0.5 0.5" rotation="0 0 0"
+                    cursor-listener
+                    >
+          </a-entity>
       </a-entity>
-      <a-entity class="interactive" gltf-model="#table" position="4.5 0.0 2.1" scale="1.4 1 1.4"
-                ></a-entity>
-      <a-entity class="interactive"  gltf-model="#drawer" position="-0.5 0.0 -1.95" 
-                scale="0.03 0.03 0.03" rotation="0 -90 0"
-                ></a-entity>
-      <a-entity class="interactive"  gltf-model="#soccerBall" position="-1.4 0.3 2.5" 
+      
+
+      <a-entity id="lampModel" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.3" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0.8 2.1" cursor-listener>
+           <a-entity class="interactive" gltf-model="#lamp" position="0 0 0" scale="0.1 0.1 0.1" cursor-listener></a-entity>
+      </a-entity>
+
+      <a-entity id="tableModel" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 1" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0.0 2.1" cursor-listener>
+           <a-entity class="interactive" gltf-model="#table" position="0 0 0" scale="1.4 1 1.4" cursor-listener></a-entity>
+      </a-entity>
+
+
+      <a-entity id="drawerModel" class="interactive" geometry="primitive: box; width: 1; depth: 2; height: 2.5" material="wireframe: true; transparency: true; opacity: 1.0" position="-1.9 0.0 1" cursor-listener>
+           <a-entity class="interactive"  gltf-model="#drawer" position="-0.3 0 0"  cursor-listener
+                    scale="0.03 0.03 0.03" rotation="0 0 0"
+                    ></a-entity>
+      </a-entity>
+
+      <a-entity id="drawerModel" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.5" material="wireframe: true; transparency: true; opacity: 1.0" position="-1.4 0.3 2.5" cursor-listener>
+           <a-entity class="interactive"  gltf-model="#soccerBall" position="0 0 0" cursor-listener
                 scale="0.003 0.003 0.003" rotation="0 0 0"
                 ></a-entity>
        <!-- ROOM SETUP -->
        <rw-room position="-2 0 -2" mixin="wallMat">
-            <rw-wall position="7 0 0"></rw-wall>
-            <rw-wall position="7 0 5"></rw-wall>
-            <rw-wall position="0 0 5"></rw-wall>
-            <rw-wall position="0 0 0">
-              <rw-doorhole id="holeA"></rw-doorhole>
+            <rw-wall position="7 0 0" height="4"></rw-wall>
+            <rw-wall position="7 0 5" height="4"></rw-wall>
+            <rw-wall position="0 0 5" height="4"></rw-wall>
+            <rw-wall position="0 0 0" height="4">
+              <rw-doorhole id="holeA" height="4"></rw-doorhole>
             </rw-wall>
+            <rw-ceiling></rw-ceiling>
             <rw-floor mixin="floorMat"></rw-floor>
         </rw-room>
-        
-<!--
-       <rw-room position="0 0 -3" material="src:#wallTexture; repeat:2.0 2.0;">
-            <rw-wall position=" 1 0 -1" ></rw-wall>
-            <rw-wall position=" 1 0  1" >
+        <rw-doorlink from="#holeA" to="#holeB" width="1" position="0 -1 0">
+        <rw-room position="0 0 -3" material="src:#wallTexture; repeat:2.0 2.0;">
+            <rw-wall position="-1 0 -1" ></rw-wall>
+            <rw-wall position=" -1 0  1" >
                 <rw-doorhole id="holeB"></rw-doorhole>
             </rw-wall>
             <rw-wall position="-1 0  1" ></rw-wall>
             <rw-wall position="-1 0 -1" ></rw-wall>
         </rw-room>
+        
+
+<!--
+       
        <rw-room position="-2.5 0 -2.5" width="10" length="5" height="3">
         
         <rw-wall material="src:#wallTexture; repeat:2.0 2.0;">
@@ -246,6 +280,7 @@
     </script>
     <script>
     getModels();
+    console.log(getTranslations());
     </script>
   </body>
 </html>

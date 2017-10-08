@@ -13,5 +13,48 @@ function getModels(req, res) {
 	});
 	res.json(modelsList);
 }
+
+function getAmericanRoomTranslations(req, res) {
+	let result = 
+	{
+    	"bed1" : {
+                	"eng" : "bed",
+               	 	"arab_vern" : "alsarir",
+               	  	"arab_text" : "bed_trans1.png"
+    	}
+    }
+ //    	"lamp1" : {
+ //                	"eng" : "lamp",
+ //                	"arab_vern" : "misbah", 
+	// 	"Arab_text”: “lamp_trans1.png“, 
+ //        	},
+	// “nightstand1” : {
+	// 	“eng” : “nightstand”,
+	// 	“arab_vern”: “mundida”,
+	// 	“arab_text”: “nightstand_trans1.png”,
+	// },
+	// “ball1” : {
+	// 	“eng”: “soccer ball”,
+	// 	“arab_vern” : “kurat alqadam”,
+	// 	“arab_text” : “ball_trans1.png”,
+	// },
+	// “dresser1” : {
+	// 	“eng” : “dresser”,
+	// 	“arab_vern” : “mudamad”,
+	// 	“arab_text” : “dresser_trans1.png”,
+	// },
+	// “dog1” : {
+	// 	“eng” : “dog”,
+	// 	“arab_vern” : “alka”,
+	// 	“arab_text” : “dog_trans1.png”,
+	// },
+	// “family1” : {
+	// “eng”: “family”,
+	// “arab_vern”: “usra”,
+	// “arab_text” : “family_trans1.png”,
+	// 	}
+	// };
+	res.json(result);
+}
 //createElectionAndAddCandidates
-module.exports = { getModels };
+module.exports = { getModels, getAmericanRoomTranslations };
