@@ -1,5 +1,5 @@
 // Component to change to a sequential color on click.
-let state = 0;
+var state = 0;
 AFRAME.registerComponent('cursor-listener', {
   init: function () {
     var lastIndex = -1;
@@ -20,6 +20,7 @@ AFRAME.registerComponent('cursor-listener', {
           textBox.setAttribute('color', "black");
           textBox.setAttribute('opacity', 0.5);
           textBox.setAttribute('class', "temp");
+          textBox.setAttribute('look-at', "[camera]");
 
           //depending on what key we are getting switch between a text object and an image texture...
           console.log("MY: ", translationsJSON);
@@ -44,14 +45,13 @@ AFRAME.registerComponent('cursor-listener', {
               } else if (translationsJSON[divReference.id]["arabic_text"]){
 
                 //get the pic. set it to the plane object...
+
               }
           }
         });
     });
 
     this.el.addEventListener('mouseenter', function (evt) {
-      lastIndex = (lastIndex + 1) % COLORS.length;
-      this.setAttribute('material', 'color', COLORS[lastIndex]);
       console.log('I was looked at: ', evt.detail.intersection.point);
     });
 
