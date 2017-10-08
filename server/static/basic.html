@@ -12,12 +12,13 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
-    <script src="https://unpkg.com/aframe-particle-system-component@1.0.5/dist/aframe-particle-system-component.min.js"></script>
+    
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script> 
+    <script src="https://unpkg.com/aframe-cubemap-component@0.1.2/dist/aframe-cubemap-component.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <script src="js/util.js"></script>
-    <!-- include gearvr-controls component... -->
-    <script src="https://rawgit.com/chenzlabs/gearvr-controls/master/dist/aframe-gearvr-controls-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="js/cursor-listener.js"></script>
  
     <script>
       // Define custom schema for syncing avatar color, set by random-color
@@ -47,19 +48,22 @@
       room: dev;
       debug: true;
       adapter: wseasyrtc;
-    ">
+      light="defaultLightsEnabled: false">
 
-      <a-light type="directional" position="0 0 0" rotation="-90 0 0" target="#directionaltarget">
-        <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
-      </a-light>
+      <!-- LIGHING -->
+
+      <a-entity light="type: directional; color: #FFFFFF; intensity: 0.5" position="-5 5 1" rotation="80 0 0"></a-entity>
+      <a-entity light="type: directional; color: #FFFFFF; intensity: 0.1" position="-1 5 1" rotation="80 0 0"></a-entity>
+      <a-entity light="type: ambient; color: #FFFFFF; intensity: 0.4"></a-entity>
 
       <a-assets>
         <a-entity auto-detect-controllers></a-entity>
 
         <img id="floorTexture" src="/InternalTextures/FloorTexture.jpg">
-        <img id="wallTexture" src="/InternalTextures/WallTexture.jpg">
+        <img id="wallTexture" src="/InternalTextures/WallTexture2.jpg">
         
-        <a-mixin id="floorMat" material="color:#BBB"></a-mixin>
+        <a-mixin id="floorMat" material="src:#floorTexture; repeat:0.3 0.3; shader: flat;"></a-mixin>
+        <a-mixin id="wallMat" material="src:#wallTexture; repeat:0.5 0.5;"></a-mixin>
         
         <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
         <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
@@ -112,36 +116,78 @@
 
         <!-- /Templates -->
 
-      <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight: 1.6" spawn-in-circle="radius:3" wasd-controls look-controls>
-      </a-entity>
-      <a-entity position="0 1.8 5">
-            <a-entity camera look-controls></a-entity>
-      </a-entity>
+      <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight: 1.4" spawn-in-circle="radius:3" wasd-controls look-controls>
+              <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: black; shader: flat">
+              </a-entity>
+            </a-entity>
+        </a-entity>
         <a-entity ui-modal visible="false">
           <a-plane width="3" height="0.5" color="black" position="0 -3.2 0" opacity="0.5">
-                  <a-text value="Insert Bed"></a-text>
+                  <a-text id="text1" value="Insert Bed"></a-text>
           </a-plane>
           <a-plane width="3" height="0.5" color="black" position="0 -2.2 0"
           opacity="0.5">
-                  <a-text value="Insert toy"></a-text>
+                  <a-text id="text2" value="Insert toy"></a-text>
           </a-plane>
           <a-plane width="3" height="0.5" color="black" position="0 -1.2 0"
           opacity="0.5">
-                  <a-text value="Insert pet"></a-text>
+                  <a-text id="text3" value="Insert pet"></a-text>
           </a-plane>
         </a-entity>
 
       <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048" segments-height="5" segments-width="8"></a-sky>
       <a-plane src="#groundTexture" rotation="-90 0 0" position="0 -0.01 0" height="100" width="100"></a-plane>
 
-      <a-light type="directional" intensity="0.9" position="-1 -2  2"></a-light>
-      <a-light type="directional" intensity="1.0" position=" 2  1 -1"></a-light>
       <a-assets>
-          <a-asset-item id="penguin" src="/3DModels/NiceBed/NiceBed.glb"></a-asset-item> 
+          <a-asset-item id="lamp" src="/3DModels/AmericanRoom/lamp/scene.gltf"></a-asset-item> 
+          <a-asset-item id="bed" src="/3DModels/AmericanRoom/bed2/scene.gltf"></a-asset-item>
+          <a-asset-item id="table" src="/3DModels/AmericanRoom/marble_table/scene.gltf"></a-asset-item>
+          <a-asset-item id="drawer" src="/3DModels/AmericanRoom/drawer/scene.gltf"></a-asset-item>
+          <a-asset-item id="soccerBall" src="/3DModels/AmericanRoom/soccer_ball/scene.gltf"></a-asset-item>
+
       </a-assets>
-      <a-entity gltf-model="#penguin" position="1 0 1"></a-entity>
+
+      <a-entity class="interactive" gltf-model="#lamp" position="4.5 0.8 2.1" scale="0.1 0.1 0.1" handle-events
+                ></a-entity>
+      <a-entity class="interactive" gltf-model="#bed" position="2.7 0 -0.5" 
+                scale="0.5 0.5 0.5" rotation="0 0 0"
+                cursor-listener
+                >
+      </a-entity>
+      <a-entity class="interactive" gltf-model="#table" position="4.5 0.0 2.1" scale="1.4 1 1.4"
+                ></a-entity>
+      <a-entity class="interactive"  gltf-model="#drawer" position="-0.5 0.0 -1.95" 
+                scale="0.03 0.03 0.03" rotation="0 -90 0"
+                ></a-entity>
+      <a-entity class="interactive"  gltf-model="#soccerBall" position="-1.4 0.3 2.5" 
+                scale="0.003 0.003 0.003" rotation="0 0 0"
+                ></a-entity>
 
 
+       <!-- ROOM SETUP -->
+       <rw-room position="-2 0 -2" mixin="wallMat">
+            <rw-wall position="7 0 0"></rw-wall>
+            <rw-wall position="7 0 5"></rw-wall>
+            <rw-wall position="0 0 5"></rw-wall>
+            <rw-wall position="0 0 0">
+              <rw-doorhole id="holeA"></rw-doorhole>
+            </rw-wall>
+            <rw-floor mixin="floorMat"></rw-floor>
+        </rw-room>
+        
+
+<!--
+       <rw-room position="0 0 -3" material="src:#wallTexture; repeat:2.0 2.0;">
+            <rw-wall position=" 1 0 -1" ></rw-wall>
+            <rw-wall position=" 1 0  1" >
+                <rw-doorhole id="holeB"></rw-doorhole>
+            </rw-wall>
+            <rw-wall position="-1 0  1" ></rw-wall>
+            <rw-wall position="-1 0 -1" ></rw-wall>
+        </rw-room>
        <rw-room position="-2.5 0 -2.5" width="10" length="5" height="3">
         
         <rw-wall material="src:#wallTexture; repeat:2.0 2.0;">
@@ -197,23 +243,9 @@
         <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
         <rw-ceiling material="color:#99A"></rw-ceiling>
         
-      </rw-room>
+      </rw-room> -->
       
-      <rw-room position="0 0 0" outside="true" material="color:#877">
-        
-        <rw-wall position="-3 0 -8" height="3" material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        <rw-wall position=" 4 0 -8" height="3" material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        <rw-wall position=" 4 0  3" height="3" material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        <rw-wall position="-3 0  3" height="3" material="src:#wallTexture; repeat:2.0 2.0;">
-          <rw-doorhole id="frontOuter"></rw-doorhole>
-          <rw-doorlink from="#frontInner" to="#frontOuter" material="color:#778" position="3 0 0">
-            <rw-floor></rw-floor>
-            <rw-ceiling></rw-ceiling>
-            <rw-sides></rw-sides>
-          </rw-doorlink>
-        </rw-wall>
-        
-      </rw-room>  
+      
  <!--      <a-sky src="#sky" rotation="0 -90 0"></a-sky>
       <a-entity id="particles" particle-system="preset: snow"></a-entity> -->
     </a-scene>
