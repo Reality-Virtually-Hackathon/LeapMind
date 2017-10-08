@@ -16,6 +16,9 @@
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script> 
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <script src="js/util.js"></script>
+    <!-- include gearvr-controls component... -->
+    <script src="https://rawgit.com/chenzlabs/gearvr-controls/master/dist/aframe-gearvr-controls-component.min.js"></script>
+ 
     <script>
       // Define custom schema for syncing avatar color, set by random-color
       NAF.schemas.add({
@@ -51,6 +54,7 @@
       </a-light>
 
       <a-assets>
+        <a-entity auto-detect-controllers></a-entity>
 
         <img id="floorTexture" src="/InternalTextures/FloorTexture.jpg">
         <img id="wallTexture" src="/InternalTextures/WallTexture.jpg">
@@ -60,7 +64,7 @@
         <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
         <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
         <!-- <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous"> -->
-        <!-- <img id="sky" src="http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" /> -->
+        <img id="sky" src="http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" /> 
 
         <!-- Templates -->
 
@@ -133,9 +137,9 @@
       <a-light type="directional" intensity="0.9" position="-1 -2  2"></a-light>
       <a-light type="directional" intensity="1.0" position=" 2  1 -1"></a-light>
       <a-assets>
-        <!-- <a-asset-item id="penguin" src="/3DModels/NiceBed/NiceBed.glb"></a-asset-item> -->
+          <a-asset-item id="penguin" src="/3DModels/NiceBed/NiceBed.glb"></a-asset-item> 
       </a-assets>
-      <a-entity gltf-model="#penguin"></a-entity>
+      <a-entity gltf-model="#penguin" position="1 0 1"></a-entity>
 
 
        <rw-room position="-2.5 0 -2.5" width="10" length="5" height="3">
