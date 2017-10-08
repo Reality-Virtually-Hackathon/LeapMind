@@ -3,9 +3,10 @@
     <meta charset="utf-8">
     <title>Dev Example — Networked-Aframe</title>
     <meta name="description" content="Dev Example — Networked-Aframe">
-
+    <style src="css/menu.css"></style>
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="/build.js"></script>
+    <script src="https://rawgit.com/IdeaSpaceVR/aframe-ui-modal-component/master/dist/aframe-ui-modal-component.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -13,6 +14,7 @@
     <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.5/dist/aframe-particle-system-component.min.js"></script>
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script> 
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <script src="js/util.js"></script>
     <script>
       // Define custom schema for syncing avatar color, set by random-color
@@ -108,13 +110,22 @@
 
       <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight: 1.6" spawn-in-circle="radius:3" wasd-controls look-controls>
       </a-entity>
-
-<!--       <a-entity position="0 0 0"
-        geometry="primitive: plane; width: 10000; height: 10000;" rotation="-90 0 0"
-        material="src: #grid; repeat: 10000 10000; transparent: true; metalness:0.6; roughness: 0.4; sphericalEnvMap: #sky;"></a-entity> -->
-
-<!--       <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
-      <a-entity light="color: #ffaaff; intensity: 1.5" position="5 5 5"></a-entity> -->
+      <a-entity position="0 1.8 5">
+            <a-entity camera look-controls></a-entity>
+      </a-entity>
+        <a-entity ui-modal visible="false">
+          <a-plane width="3" height="0.5" color="black" position="0 -3.2 0" opacity="0.5">
+                  <a-text value="Insert Bed"></a-text>
+          </a-plane>
+          <a-plane width="3" height="0.5" color="black" position="0 -2.2 0"
+          opacity="0.5">
+                  <a-text value="Insert toy"></a-text>
+          </a-plane>
+          <a-plane width="3" height="0.5" color="black" position="0 -1.2 0"
+          opacity="0.5">
+                  <a-text value="Insert pet"></a-text>
+          </a-plane>
+        </a-entity>
 
       <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048" segments-height="5" segments-width="8"></a-sky>
       <a-plane src="#groundTexture" rotation="-90 0 0" position="0 -0.01 0" height="100" width="100"></a-plane>
@@ -202,6 +213,10 @@
  <!--      <a-sky src="#sky" rotation="0 -90 0"></a-sky>
       <a-entity id="particles" particle-system="preset: snow"></a-entity> -->
     </a-scene>
+    <div class="a-enter-vr" aframe-injected>
+      <button class="menu-button" title="click for options" aframe-injected>
+      </button> 
+    </div>
     <script>
       // On mobile remove elements that are resource heavy
       var isMobile = AFRAME.utils.device.isMobile();
