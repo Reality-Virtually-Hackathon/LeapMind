@@ -1,4 +1,5 @@
 // Component to change to a sequential color on click.
+let state = 0;
 AFRAME.registerComponent('cursor-listener', {
   init: function () {
     var lastIndex = -1;
@@ -28,20 +29,23 @@ AFRAME.registerComponent('cursor-listener', {
               console.log("IM BOUT TO");
               if(translationsJSON[divReference.id]["eng"]) {
                 var textplane = document.createElement('a-text');
-                textplane.setAttribute('value', translationsJSON[divReference.id]["eng"]);
+                if(!state) {
+                  textplane.setAttribute('value', translationsJSON[divReference.id]["arab_vern"]);
+                  state = !state;
+                } else {
+                  textplane.setAttribute('value', translationsJSON[divReference.id]["eng"]);
+                  state = !state;
+                }
                 textplane.setAttribute('size', 0.2)
                 textBox.appendChild(textplane);
                 document.querySelector("a-scene").appendChild(textBox);
                 textBox.addEventListener('loaded', function () {
-
                 });
               } else if (translationsJSON[divReference.id]["arabic_text"]){
+
                 //get the pic. set it to the plane object...
               }
           }
-        // <a-plane width="3" height="0.5" color="black" position="0 -3.2 0" opacity="0.5">
-        //             <a-text id="text1" value="Insert Bed"></a-text>
-        //     </a-plane>
         });
     });
 

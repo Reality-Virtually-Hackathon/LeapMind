@@ -22,6 +22,10 @@ function getAmericanRoomTranslations(req, res) {
 			"arab_vern": "alsarir",
 			"arab_text": "bed_trans1.png"
 		},
+		"table": {
+			"eng": "table",
+			"arab_vern": "tawila"
+		},
 		"lamp1": {
 			"eng": "lamp",
 			"arab_vern": "misbah",
