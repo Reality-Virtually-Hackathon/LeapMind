@@ -137,27 +137,44 @@
 
           <a-asset-item id="artist" src="/3DModels/SyrianRoom/artist_easel/scene.gltf"></a-asset-item>
       </a-assets>
-      <a-entity class="interactive" gltf-model="#nightstand2" position = "4.5 0 -1" scale="0.002 0.002 0.002" rotation="0 -90 0" handle-events>
+
+      <!-- Nightstand bounding box and model --> 
+      <a-entity id="nightStandModel" class="interactive" geometry="primitive: box; width: 0.8; depth: 0.8; height: 2.3" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0 0" cursor-listener>
+        <a-entity class="interactive" gltf-model="#nightstand2" position = "0 0 0" scale="0.002 0.002 0.002" rotation="0 -90 0" handle-events></a-entity>
       </a-entity>
-      <a-entity class="artist" gltf-model="#artist" position="0 0.005 2.5" scale="0.005 0.005 0.005" rotation = "0 175 0" handle-events></a-entity>
-      <a-entity class="interactive" gltf-model="#lamp" position="4.5 0.8 2.1" scale="0.1 0.1 0.1" handle-events>
+      <!-- end --> 
+
+      <!-- Artist easel bounding box and model --> 
+      <a-entity id="artistEaselModel" class="interactive" geometry="primitive: box; width: 0.8; depth: 0.8; height: 2.3" material="wireframe: true; transparency: true; opacity: 1.0" position="0 0.005 2.5" cursor-listener>
+        <a-entity class="artist" gltf-model="#artist" position="0 0 0" scale="0.005 0.005 0.005" rotation = "0 175 0" handle-events></a-entity>
       </a-entity>
+      <!--end-->
+
       <a-entity class="interactive" gltf-model="#cat3" position="0 0 -0.5" 
                 scale="0.01 0.01 0.01" rotation="0 0 0"
                 cursor-listener>
       </a-entity>
-      <a-entity class="interactive" gltf-model="#bed" position="2.5 0 1" 
+
+      <!-- Bed bounding box and model --> 
+      <a-entity id="bedModel" class="interactive" geometry="primitive: box; width: 2; depth: 0.8; height: 2.8" material="wireframe: true; transparency: true; opacity: 1.0" position="0 0 -1" cursor-listener>
+        <a-entity class="interactive" gltf-model="#bed" position="2.8 0 2" 
                 scale="0.1 0.1 0.1" rotation="0 0 0"
-                cursor-listener>
+                cursor-listener></a-entity>
       </a-entity>
-      <a-entity class="interactive" gltf-model="#table" position="4.5 0.0 2.1" scale="1.4 1 1.4"
-                ></a-entity>
-      <a-entity class="interactive"  gltf-model="#drawer" position="-0.5 0.0 -1.95" 
+      <!-- end --> 
+
+      <!-- Table bounding box and model --> 
+      <a-entity id="bedModel" class="interactive" geometry="primitive: box; width: 1; depth: 1; height: 1" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0.0 2.1" cursor-listener>
+        <a-entity class="interactive" gltf-model="#table" position="0 0 0 " scale="1.4 1 1.4"></a-entity>
+      </a-entity>
+      <!-- <a-entity class="interactive"  gltf-model="#drawer" position="-0.5 0.0 -1.95" 
                 scale="0.03 0.03 0.03" rotation="0 -90 0"
-                ></a-entity>
-      <a-entity class="interactive"  gltf-model="#soccerBall" position="-1.4 0.3 2.5" 
+                ></a-entity> -->
+      <!--end--> 
+
+      <!-- <a-entity class="interactive"  gltf-model="#soccerBall" position="-1.4 0.3 2.5" 
                 scale="0.003 0.003 0.003" rotation="0 0 0"
-                ></a-entity>
+                ></a-entity> -->
        <!-- ROOM SETUP -->
        <rw-room position="-2 0 -2" mixin="wallMat">
             <rw-wall position="7 0 0"></rw-wall>
