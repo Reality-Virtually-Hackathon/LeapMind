@@ -8,6 +8,12 @@ AFRAME.registerComponent('cursor-listener', {
       lastIndex = (lastIndex + 1) % COLORS.length;
       this.setAttribute('material', 'color', COLORS[lastIndex]);
       console.log('I was clicked at: ', evt.detail.intersection.point);
+      var sphereEl = document.createElement('a-sphere');
+      sphereEl.setAttribute('radius', 1);
+      document.querySelector('a-scene').appendChild(sphereEl);
+      sphereEl.addEventListener('loaded', function () {
+        console.log('sphere attached');
+      });
     });
 
     this.el.addEventListener('mouseenter', function (evt) {

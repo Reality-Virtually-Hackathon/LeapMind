@@ -61,10 +61,6 @@
         
         <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
         <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
-        <!-- <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous"> 
-        <img id="sky" src="http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" /> -->
-
-        <
 
         <!-- Templates -->
         <!-- Avatar -->
@@ -116,15 +112,9 @@
                         material="color: black; shader: flat"
 
               ></a-entity>
-              <!--<a-entity cursor="fuse: true; fuseTimeout: 500"
-                  position="0 0 -1"
-                  raycaster="far: 20; interval: 1000; objects: [interactive]"
-                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                  material="color: black; shader: flat">
-              </a-entity> -->
             </a-entity>
         </a-entity>
-        <!-- <a-entity ui-modal visible="false">
+        <a-entity ui-modal visible="false">
           <a-plane width="3" height="0.5" color="black" position="0 -3.2 0" opacity="0.5">
                   <a-text id="text1" value="Insert Bed"></a-text>
           </a-plane>
@@ -136,7 +126,7 @@
           opacity="0.5">
                   <a-text id="text3" value="Insert pet"></a-text>
           </a-plane>
-        </a-entity> -->
+        </a-entity> 
 
       <a-entity cubemap="folder: /InternalTextures/cubemaps/Boston/; edgeLength: 100"></a-entity>
 
@@ -179,8 +169,8 @@
 
       <a-entity id="drawerModel" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.5" material="wireframe: true; transparency: true; opacity: 1.0" position="-1.4 0.3 2.5" cursor-listener>
            <a-entity class="interactive"  gltf-model="#soccerBall" position="0 0 0" cursor-listener
-                scale="0.003 0.003 0.003" rotation="0 0 0"
-                ></a-entity>
+                scale="0.003 0.003 0.003" rotation="0 0 0"></a-entity>
+      </a-entity>
        <!-- ROOM SETUP -->
        <rw-room position="-2 0 -2" mixin="wallMat">
             <rw-wall position="7 0 0" height="4"></rw-wall>
@@ -201,70 +191,6 @@
             <rw-wall position="-1 0  1" ></rw-wall>
             <rw-wall position="-1 0 -1" ></rw-wall>
         </rw-room>
-        
-
-<!--
-       
-       <rw-room position="-2.5 0 -2.5" width="10" length="5" height="3">
-        
-        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;">
-          <rw-doorhole id="holeA"></rw-doorhole>
-        </rw-wall>
-        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;"> </rw-wall>
-        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;">
-          <rw-doorhole id="frontInner"></rw-doorhole>
-        </rw-wall>
-        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        
-        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
-        <rw-ceiling material="color:#AAA"></rw-ceiling>
-        
-      </rw-room>
-      
-      <rw-doorlink from="#holeA" to="#holeB" width="2" position="0.5 0 0">
-        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
-        <rw-ceiling material="color:#BB6"></rw-ceiling>
-        <rw-sides material="src:#wallTexture; repeat:2.0 2.0;"></rw-sides>
-      </rw-doorlink>
-      
-      <rw-room position="0 0 -2.7">
-        
-        <rw-wall material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        <rw-wall position=" 2 0 0" material="src:#wallTexture; repeat: 2.0 2.0;">
-          <rw-doorhole id="holeB"></rw-doorhole>
-        </rw-wall>
-        <rw-wall position=" 2 0 -5" material="src:#wallTexture; repeat:2.0 2.0;">
-          <rw-doorhole id="holeC"></rw-doorhole>
-          <rw-doorlink from="#holeC" to="#holeD" position="4 0 0"></rw-doorlink>
-        </rw-wall>
-        <rw-wall position="-2 0 -5" material="src:#wallTexture; repeat:2.0 2.0;">
-          <a-box position="0.5 1.4 0" scale="0.5 0.5 0.2"></a-box>
-          <a-box position="1.5 1.7 0" scale="0.5 0.5 0.2"></a-box>
-          <a-box position="2.5 1.4 0" scale="0.5 0.5 0.2"></a-box>
-        </rw-wall>
-        
-        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
-        <rw-ceiling material="src:#wallTexture; repeat:2.0 2.0;"></rw-ceiling>
-        
-      </rw-room>
-      
-      <rw-room position="2 0 -5">
-        
-        <rw-wall position="0 0 0" material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        <rw-wall position="0 0 2" material="src:#wallTexture; repeat:2.0 2.0;">
-          <rw-doorhole id="holeD"></rw-doorhole>
-        </rw-wall>
-        <rw-wall position="1 0 2" material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        <rw-wall position="1 0 0" material="src:#wallTexture; repeat:2.0 2.0;"></rw-wall>
-        
-        <rw-floor mixin="floorMat" material="src:#floorTexture; repeat:0.5 0.5;"></rw-floor>
-        <rw-ceiling material="color:#99A"></rw-ceiling>
-        
-      </rw-room> -->
-      
-      
- <!--      <a-sky src="#sky" rotation="0 -90 0"></a-sky>
-      <a-entity id="particles" particle-system="preset: snow"></a-entity> -->
     </a-scene>
     <div class="a-enter-vr" aframe-injected>
       <button class="menu-button" title="click for options" aframe-injected>
