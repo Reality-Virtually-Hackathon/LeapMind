@@ -1,8 +1,8 @@
 {
 	"bed1" : {
-            	"eng" : "bed",
-           	 "arab_vern" : "alsarir",
-           	  "arab_text" : "bed_trans1.png", 
+            "eng" : "bed",
+           	"arab_vern" : "alsarir",
+           	"arab_text" : "bed_trans1.png", 
 	},
  
     "lamp1" : {

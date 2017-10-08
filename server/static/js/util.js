@@ -5,11 +5,11 @@ function getModels() {
 		return response;
 	});
 }
-function getTranslations() {
+function getTranslations(divRef, callback) {
 	let url='/getAmericanRoomTranslations';
 	let getRequest = $.get(url);
 	getRequest.done(function(response) {
 		console.log(response);
-		return response;
+		callback(divRef, response);
 	});
 }
