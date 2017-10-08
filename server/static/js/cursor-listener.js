@@ -26,17 +26,17 @@ AFRAME.registerComponent('cursor-listener', {
           if (translationsJSON[divReference.id]){
             //do something
               console.log("IM BOUT TO");
-              if(translationsJSON["bed1"]["eng"]) {
+              if(translationsJSON[divReference.id]["eng"]) {
                 var textplane = document.createElement('a-text');
-                textplane.setAttribute('value', translationsJSON["bed1"]["eng"]);
+                textplane.setAttribute('value', translationsJSON[divReference.id]["eng"]);
                 textplane.setAttribute('size', 0.2)
                 textBox.appendChild(textplane);
                 document.querySelector("a-scene").appendChild(textBox);
                 textBox.addEventListener('loaded', function () {
 
                 });
-              } else {
-
+              } else if (translationsJSON[divReference.id]["arabic_text"]){
+                //get the pic. set it to the plane object...
               }
           }
         // <a-plane width="3" height="0.5" color="black" position="0 -3.2 0" opacity="0.5">
