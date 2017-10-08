@@ -126,30 +126,28 @@
                   <a-text id="text3" value="Insert pet"></a-text>
           </a-plane>
         </a-entity>
-      <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048" segments-height="5" segments-width="8"></a-sky>
+        <a-entity cubemap="folder: /InternalTextures/cubemaps/Syria/; edgeLength: 100"></a-entity>
       <a-plane src="#groundTexture" rotation="-90 0 0" position="0 -0.01 0" height="100" width="100"></a-plane>
-      <a-assets>
-          <a-asset-item id="lamp" src="/3DModels/AmericanRoom/lamp/scene.gltf"></a-asset-item> 
+      <a-assets> 
           <a-asset-item id="nightstand2" src="/3DModels/SyrianRoom/Nightstand2/scene.gltf">
           </a-asset-item>
-          <a-asset-item id="bed" src="/3DModels/AmericanRoom/bed2/scene.gltf"></a-asset-item>
+          <a-asset-item id="bed" src="/3DModels/SyrianRoom/bed2/scene.gltf"></a-asset-item>
           <a-asset-item id="table" src="/3DModels/AmericanRoom/marble_table/scene.gltf"></a-asset-item>
-          <a-asset-item id="drawer" src="/3DModels/AmericanRoom/drawer/scene.gltf"></a-asset-item>
-          <a-asset-item id="soccerBall" src="/3DModels/AmericanRoom/soccer_ball/scene.gltf"></a-asset-item>
-<!--           <a-asset-item id="cat2" src="/3DModels/SyrianRoom/Cat2/scene.gltf"></a-asset-item>
- -->
+          <!-- <a-asset-item id="cat3" src="/3DModels/SyrianRoom/Cat2/scene.gltf"></a-asset-item> -->
+
           <a-asset-item id="artist" src="/3DModels/SyrianRoom/artist_easel/scene.gltf"></a-asset-item>
       </a-assets>
-      <a-entity class="interactive" gltf-model="#nightstand2" position = "0 0 0" scale="1 1 1" handle-events>
+      <a-entity class="interactive" gltf-model="#nightstand2" position = "4.5 0 -1" scale="0.002 0.002 0.002" rotation="0 -90 0" handle-events>
       </a-entity>
       <a-entity class="artist" gltf-model="#artist" position="0 0.005 2.5" scale="0.005 0.005 0.005" rotation = "0 175 0" handle-events></a-entity>
       <a-entity class="interactive" gltf-model="#lamp" position="4.5 0.8 2.1" scale="0.1 0.1 0.1" handle-events>
       </a-entity>
-<!--       <a-entity class="interactive" gltf-model="#cat2" position="0 0 -0.5" 
-                scale="0.1 0.01 0.01" rotation="0 0 0"
-                cursor-listener> -->
-      <a-entity class="interactive" gltf-model="#bed" position="2.7 0 -0.5" 
-                scale="0.5 0.5 0.5" rotation="0 0 0"
+      <a-entity class="interactive" gltf-model="#cat3" position="0 0 -0.5" 
+                scale="0.01 0.01 0.01" rotation="0 0 0"
+                cursor-listener>
+      </a-entity>
+      <a-entity class="interactive" gltf-model="#bed" position="2.5 0 1" 
+                scale="0.1 0.1 0.1" rotation="0 0 0"
                 cursor-listener>
       </a-entity>
       <a-entity class="interactive" gltf-model="#table" position="4.5 0.0 2.1" scale="1.4 1 1.4"
