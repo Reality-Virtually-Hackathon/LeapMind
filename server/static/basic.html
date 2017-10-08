@@ -99,9 +99,7 @@
             </a-entity>
           </a-entity>
         </script>
-        <script id="simple" type="text/html">
-          <a-sphere></a-sphere>
-        </script>
+
       </a-assets>
         <!-- /Templates -->
       <a-entity id="player" networked="template:#avatar-template;showLocalTemplate:false;" camera="userHeight: 1.4" spawn-in-circle="radius:3" wasd-controls look-controls>
@@ -109,11 +107,9 @@
                         cursor="fuse: true; fuseTimeout: 500"
                         position="0 0 -1"
                         geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                        material="color: black; shader: flat"
-
-              ></a-entity>
-            </a-entity>
-        </a-entity>
+                        material="color: black; shader: flat">
+              </a-entity>
+      </a-entity>
         <!-- <a-entity ui-modal visible="false">
           <a-plane width="3" height="0.5" color="black" position="0 -3.2 0" opacity="0.5">
                   <a-text id="text1" value="Insert Bed"></a-text>
@@ -139,31 +135,54 @@
           <a-asset-item id="drawer" src="/3DModels/AmericanRoom/drawer/scene.gltf"></a-asset-item>
           <a-asset-item id="soccerBall" src="/3DModels/AmericanRoom/soccer_ball/scene.gltf"></a-asset-item>
       </a-assets>
-      <a-entity id="bed1" class="interactive" geometry="primitive: box; width: 3; depth: 2; height: 1.5" material="wireframe: true; transparency: true; opacity: 1.0" position="2.7 1 -0.5" cursor-listener>
-      </a-assets> 
-      <a-entity id="bedModel" class="interactive" geometry="primitive: box; width: 3; depth: 2; height: 1.5" material="wireframe: true; transparency: true; opacity: 1.0" position="2.7 1 -0.5" cursor-listener>          
+
+
+
+      <a-entity id="bed1" class="interactive" geometry="primitive: box; width: 3; depth: 2; height: 1.5" material="wireframe: true; transparency: true; opacity: 1.0" position="2.7 1 -0.5" cursor-listener>       
           <a-entity  gltf-model="#bed" position="-1 -1 -1" 
                     scale="0.5 0.5 0.5" rotation="0 0 0"
                     cursor-listener
                     >
           </a-entity>
       </a-entity>
-      <a-entity id="lampModel" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.3" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0.8 2.1" cursor-listener>
+
+
+
+
+
+      <a-entity id="lamp1" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.3" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0.8 2.1" cursor-listener>
            <a-entity class="interactive" gltf-model="#lamp" position="0 0 0" scale="0.1 0.1 0.1" cursor-listener></a-entity>
       </a-entity>
 
-      <a-entity id="tableModel" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 1" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0.0 2.1" cursor-listener>
+
+
+
+      <a-entity id="nightstand1" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 1" material="wireframe: true; transparency: true; opacity: 1.0" position="4.5 0.0 2.1" cursor-listener>
            <a-entity class="interactive" gltf-model="#table" position="0 0 0" scale="1.4 1 1.4" cursor-listener></a-entity>
       </a-entity>
-      <a-entity id="drawerModel" class="interactive" geometry="primitive: box; width: 1; depth: 2; height: 2.5" material="wireframe: true; transparency: true; opacity: 1.0" position="-1.9 0.0 1" cursor-listener>
-           <a-entity class="interactive"  gltf-model="#drawer" position="-0.3 0 0"  cursor-listener
-                    scale="0.03 0.03 0.03" rotation="0 0 0"
-                    ></a-entity>
+
+
+
+
+
+
+      <a-entity id="dresser1" class="interactive" geometry="primitive: box; width: 1; depth: 2; height: 2.5" material="wireframe: true; transparency: true; opacity: 1.0" position="-1.9 0.0 1" cursor-listener>
+          <a-entity class="interactive"  gltf-model="#drawer" position="-0.3 0 0"  cursor-listener
+                    scale="0.03 0.03 0.03" rotation="0 0 0">          
+          </a-entity>
       </a-entity>
-      <a-entity id="drawerModel" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.5" material="wireframe: true; transparency: true; opacity: 1.0" position="-1.4 0.3 2.5" cursor-listener>
+
+
+
+
+
+
+      <a-entity id="ball1" class="interactive" geometry="primitive: box; width: 0.5; depth: 0.5; height: 0.5" material="wireframe: true; transparency: true; opacity: 1.0" position="-1.4 0.3 2.5" cursor-listener>
            <a-entity class="interactive"  gltf-model="#soccerBall" position="0 0 0" cursor-listener
                 scale="0.003 0.003 0.003" rotation="0 0 0"></a-entity>
       </a-entity>
+
+
        <!-- ROOM SETUP -->
        <rw-room position="-2 0 -2" mixin="wallMat">
             <rw-wall position="7 0 0" height="4"></rw-wall>
@@ -185,6 +204,8 @@
             <rw-wall position="-1 0 -1" ></rw-wall>
         </rw-room>
     </a-scene>
+
+    
     <div class="a-enter-vr" aframe-injected>
       <button class="menu-button" title="click for options" aframe-injected>
       </button> 
